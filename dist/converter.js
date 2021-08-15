@@ -46,7 +46,7 @@ function convert(createElement, element) {
     return element;
   }
 
-  var svgObjectMap = extraProps.extrasvgObjectMap;
+  var extrasvgObjectMap = extraProps.svgObjectMap || {};
 
   var svgObjectMapMerged = _objectSpread(_objectSpread({}, svgObjectMap), extrasvgObjectMap);
 

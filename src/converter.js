@@ -16,7 +16,7 @@ function convert(createElement, element, extraProps = {}) {
     return element
   }
   
-  const { extrasvgObjectMap: svgObjectMap } = extraProps;
+  const extrasvgObjectMap = extraProps.svgObjectMap || {};
   const svgObjectMapMerged = {...svgObjectMap, ...extrasvgObjectMap};
 
   const isDuotone = (element.children || []).length === 2
