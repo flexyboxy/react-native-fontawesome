@@ -79,6 +79,10 @@ export default function FontAwesomeIcon(props) {
   // In other words, we don't want color (for example) to be specified via two different inputs.
   const { color: styleColor, ...modifiedStyle} = style
 
+  // This map overrides default generated svg elements.
+  // It can be used for animtion purposes.
+  const svgObjectMap = props.svgObjectMap || null;
+
   let resolvedHeight, resolvedWidth
 
   if(height || width){
@@ -103,7 +107,8 @@ export default function FontAwesomeIcon(props) {
     fill: color,
     secondaryFill: secondaryColor,
     secondaryOpacity: secondaryOpacity,
-    style: modifiedStyle
+    style: modifiedStyle,
+    svgObjectMap
   }
 
   Object.keys(props).forEach(key => {

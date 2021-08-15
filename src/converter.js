@@ -15,6 +15,9 @@ function convert(createElement, element, extraProps = {}) {
   if (typeof element === 'string') {
     return element
   }
+  
+  const { extrasvgObjectMap: svgObjectMap } = extraProps;
+  const svgObjectMapMerged = {...svgObjectMap, ...extrasvgObjectMap};
 
   const isDuotone = (element.children || []).length === 2
   const children = (element.children || []).map(
@@ -54,7 +57,7 @@ function convert(createElement, element, extraProps = {}) {
   )
 
   return createElement(
-    svgObjectMap[element.tag],
+    svgObjectMapMerged[element.tag],
     { ...mixins.attrs, ...extraProps },
     ...children
   )

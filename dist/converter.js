@@ -46,6 +46,10 @@ function convert(createElement, element) {
     return element;
   }
 
+  var svgObjectMap = extraProps.extrasvgObjectMap;
+
+  var svgObjectMapMerged = _objectSpread(_objectSpread({}, svgObjectMap), extrasvgObjectMap);
+
   var isDuotone = (element.children || []).length === 2;
   var children = (element.children || []).map(function (child, childIndex) {
     var isDuotoneSecondLayer = isDuotone && childIndex === 0;
@@ -84,7 +88,7 @@ function convert(createElement, element) {
   }, {
     attrs: {}
   });
-  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread(_objectSpread({}, mixins.attrs), extraProps)].concat(_toConsumableArray(children)));
+  return createElement.apply(void 0, [svgObjectMapMerged[element.tag], _objectSpread(_objectSpread({}, mixins.attrs), extraProps)].concat(_toConsumableArray(children)));
 }
 
 var _default = convert;

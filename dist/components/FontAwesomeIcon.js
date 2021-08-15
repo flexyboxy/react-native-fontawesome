@@ -105,8 +105,11 @@ function FontAwesomeIcon(props) {
   // In other words, we don't want color (for example) to be specified via two different inputs.
 
   var styleColor = style.color,
-      modifiedStyle = _objectWithoutProperties(style, ["color"]);
+      modifiedStyle = _objectWithoutProperties(style, ["color"]); // This map overrides default generated svg elements.
+  // It can be used for animtion purposes.
 
+
+  var svgObjectMap = props.svgObjectMap || null;
   var resolvedHeight, resolvedWidth;
 
   if (height || width) {
@@ -128,7 +131,8 @@ function FontAwesomeIcon(props) {
     fill: color,
     secondaryFill: secondaryColor,
     secondaryOpacity: secondaryOpacity,
-    style: modifiedStyle
+    style: modifiedStyle,
+    svgObjectMap: svgObjectMap
   };
   Object.keys(props).forEach(function (key) {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
